@@ -1,0 +1,124 @@
+{
+  "config": {
+    "n_stores": 8,
+    "n_skus": 60,
+    "n_weeks": 156,
+    "start": "2023-01-02",
+    "promo_rate": 0.06,
+    "dispersion": 3.0,
+    "seed": 7,
+    "test_weeks": 26,
+    "quick": false
+  },
+  "backtest": {
+    "rows": 49920,
+    "origins": 26,
+    "methods": {
+      "lgbm_p50": {
+        "label": "LightGBM (p50)",
+        "wape": 0.6585138368544339,
+        "bias": -0.19780146229866147
+      },
+      "snaive": {
+        "label": "Seasonal naive",
+        "wape": 0.8938011674437387,
+        "bias": -0.047532949080362714
+      },
+      "ma8": {
+        "label": "8-week moving average",
+        "wape": 0.7294710708910018,
+        "bias": 0.012798744447299828
+      }
+    },
+    "wape_by_horizon": {
+      "1": {
+        "lgbm_p50": 0.65331410465133,
+        "snaive": 0.8953582462851258,
+        "ma8": 0.720524680005885
+      },
+      "2": {
+        "lgbm_p50": 0.656886759625423,
+        "snaive": 0.8929555727042222,
+        "ma8": 0.7264129276448756
+      },
+      "3": {
+        "lgbm_p50": 0.6595959272620868,
+        "snaive": 0.8938533152512553,
+        "ma8": 0.7296255910273797
+      },
+      "4": {
+        "lgbm_p50": 0.6642385838175856,
+        "snaive": 0.8930404810794954,
+        "ma8": 0.7412868509826929
+      }
+    },
+    "wape_vs_best_baseline": -0.09727217002573973,
+    "interval_coverage_p10_p90": 0.8509615384615384,
+    "pinball": {
+      "p10": 0.20915211089850996,
+      "p50": 0.7186401603396605,
+      "p90": 0.41522560282148596
+    }
+  },
+  "simulation_default": {
+    "minmax": {
+      "label": "Min/max on 8-week average",
+      "fill_rate": 0.937656318964249,
+      "lost_units": 1695,
+      "orders": 2977,
+      "holding_cost": 9328.711971153845,
+      "lost_margin": 44433.36,
+      "total_cost": 53762.07197115385,
+      "avg_inventory_value": 74629.69576923076,
+      "total_cost_vs_minmax": 0.0,
+      "inventory_vs_minmax": 0.0
+    },
+    "ddmrp_classic": {
+      "label": "DDMRP, history-sized",
+      "fill_rate": 0.9480653229365896,
+      "lost_units": 1412,
+      "orders": 3834,
+      "holding_cost": 9182.476875,
+      "lost_margin": 36895.45,
+      "total_cost": 46077.926875,
+      "avg_inventory_value": 73459.815,
+      "total_cost_vs_minmax": -0.14292873794515948,
+      "inventory_vs_minmax": -0.01567580782920852
+    },
+    "ddmrp_forecast": {
+      "label": "DDMRP, forecast-sized",
+      "fill_rate": 0.9930116227747535,
+      "lost_units": 190,
+      "orders": 4809,
+      "holding_cost": 12813.565721153846,
+      "lost_margin": 4500.45,
+      "total_cost": 17314.015721153846,
+      "avg_inventory_value": 102508.52576923076,
+      "total_cost_vs_minmax": -0.6779511077913121,
+      "inventory_vs_minmax": 0.37356215528744285
+    }
+  },
+  "frontier": {
+    "lost_share_at_minmax_inventory": {
+      "minmax": 0.0623436810357511,
+      "ddmrp_classic": 0.050392358481215316,
+      "ddmrp_forecast": 0.025382622605686363
+    },
+    "best_total_cost": {
+      "minmax": 26619.47288461538,
+      "ddmrp_classic": 24961.511009615388,
+      "ddmrp_forecast": 17314.015721153846
+    },
+    "best_knob": {
+      "minmax": 4.0,
+      "ddmrp_classic": 3.0,
+      "ddmrp_forecast": 1.0
+    },
+    "best_cost_vs_best_minmax": -0.34957330687188726,
+    "best_is_interior": {
+      "minmax": true,
+      "ddmrp_classic": true,
+      "ddmrp_forecast": true
+    }
+  }
+}
